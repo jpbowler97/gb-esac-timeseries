@@ -130,7 +130,7 @@ public class TimeSeries {
 	printRateInfo();
     }
 
-    TimeSeries(double tStar, double[] bintEdges, double[] counts) {
+    TimeSeries(double tStart, double[] binEdges, double[] counts) {
 	setBinEdges(tStart, binEdges);
 	setCounts(counts);
 	printRateInfo();
@@ -386,6 +386,7 @@ public class TimeSeries {
 	    sum += this.weightsOnRates[i];
 	}
 	this.sumOfWeightsOnRates = sum;
+	this.weightedMeanRate = Descriptive.weightedMean(new DoubleArrayList(this.rates), new DoubleArrayList(this.weightsOnRates));
 	this.errorsAreSet = true;
 	setStatsOnIntensities();
     }
@@ -395,7 +396,6 @@ public class TimeSeries {
 	this.binCentreAtMaxBinHeight = this.binCentres[DataUtils.getIndex(this.maxBinHeight, this.binHeights)];
 	this.meanBinHeight = this.sumOfBinHeights/this.nNonNaNs;
 	this.meanRate = this.sumOfBinHeights/this.sumOfBinWidths;
-	this.weightedMeanRate = Descriptive.weightedMean(new DoubleArrayList(this.rates), new DoubleArrayList(this.weightsOnRates));
  	this.varianceInBinHeights = Descriptive.sampleVariance(this.nNonNaNs, this.sumOfBinHeights, this.sumOfSquaredBinHeights);
  	this.varianceInRates = Descriptive.sampleVariance(this.nNonNaNs, this.sumOfRates, this.sumOfSquaredRates);
 	this.errorOnMeanRate = Math.sqrt(this.varianceInRates/this.nNonNaNs);

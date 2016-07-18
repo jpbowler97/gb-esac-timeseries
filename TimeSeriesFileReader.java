@@ -24,6 +24,7 @@ public class TimeSeriesFileReader {
 	    catch ( BinningException e3 ) { e = e3; }
 	    catch ( IOException e4 ) { e = e4;}
 	}
-	throw new TimeSeriesFileException("File is not a FITS or ASCII time series file.", e);
+	throw new TimeSeriesFileException("Cannot make TimeSeries from file "+filename, e);
     }
+
 }

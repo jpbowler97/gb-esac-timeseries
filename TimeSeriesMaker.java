@@ -49,8 +49,7 @@ public final class TimeSeriesMaker {
     public static TimeSeries makeTimeSeries(EventList evlist) throws TimeSeriesException {
 	logger.info("Using effective Nyquist (minimum) binWidth defined as 1/(2*meanCountRate)");
 	double effectiveNyquistBinWidth = 0.5/evlist.meanRate();
-	int nBins = (int) Math.floor(evlist.duration()/effectiveNyquistBinWidth);
-	return makeTimeSeries(evlist, nBins);
+	return makeTimeSeries(evlist, effectiveNyquistBinWidth);
     }
 
     /**
@@ -98,8 +97,7 @@ public final class TimeSeriesMaker {
 	    throw new TimeSeriesException("Cannot construct bin edges");
 	}
 	double[] counts = Binner.binData(t, binEdges);
-
-
+	
 // 	//  Create Histogram1D and fill with arrival times
 // 	IAnalysisFactory af = IAnalysisFactory.create();
 // 	ITree tree = af.createTreeFactory().create();
@@ -119,7 +117,6 @@ public final class TimeSeriesMaker {
 // 	if ( nIgnoredEvents >= 1 ) {
 // 	    logger.info("Actual number of events that were dropped is: "+nOverflowEvents);
 // 	}
-
 	
 // 	//  Create Histogram1D and fill with arrival times 
 //  	double lowerEdge = 0;
