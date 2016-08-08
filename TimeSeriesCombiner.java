@@ -26,19 +26,20 @@ public final class TimeSeriesCombiner {
 
 
 	logger.info("Subtracting a TimeSeries");
+	
+	// // TIMESERIES.REBIN METHOD DOESN'T EXIST; PERHAPS IT'S IN A DIFFERENT REPOSITORY
+	// //  Check input array size and rebin if necessary
+	// if ( lc1.nBins() != lc2.nBins() ) {
 
-	//  Check input array size and rebin if necessary
-	if ( lc1.nBins() != lc2.nBins() ) {
+	//     logger.warn("TimeSeries have different number of bins");
 
-	    logger.warn("TimeSeries have different number of bins");
-
-	    if ( lc1.nBins() > lc2.nBins() ) {
-		lc1.rebin(lc2.nBins());
-	    }
-	    else {
-		lc2.rebin(lc1.nBins());
-	    }
-	}
+	//     if ( lc1.nBins() > lc2.nBins() ) {
+	// 	lc1.rebin(lc2.nBins());
+	//     }
+	//     else {
+	// 	lc2.rebin(lc1.nBins());
+	//     }
+	// }
 
 
 	//  Subtract lc.rates from rates
