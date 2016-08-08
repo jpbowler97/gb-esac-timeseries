@@ -80,20 +80,21 @@ public final class TimeSeriesCombiner {
 
 	logger.info("Adding a TimeSeries");
 
-	//  Check input array size and rebin if necessary
-	if ( lc1.nBins() != lc2.nBins() ) {
+	// // rebin method doesn't exist
+	// //  Check input array size and rebin if necessary
+	// if ( lc1.nBins() != lc2.nBins() ) {
 
-	    logger.warn("TimeSeries have different number of bins");
+	//     logger.warn("TimeSeries have different number of bins");
 
-	    if ( lc1.nBins() > lc2.nBins() ) {
+	//     if ( lc1.nBins() > lc2.nBins() ) {
 
-		lc1.rebin(lc2.nBins());
-	    }
-	    else {
-		lc2.rebin(lc1.nBins());
-	    }
+	// 	lc1.rebin(lc2.nBins());
+	//     }
+	//     else {
+	// 	lc2.rebin(lc1.nBins());
+	//     }
 
-	}
+	// }
 
 	//  Add lc.rates to rates
 	double[] newRates = new double[lc1.nBins()];
