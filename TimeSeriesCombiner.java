@@ -11,9 +11,9 @@ public final class TimeSeriesCombiner {
 
 	logger.info("Subtracting a constant ("+constant+")");
 
-	double[] newRates = new double[lc.nBins];
+	double[] newRates = new double[lc.nBins()];
 	double[] r = lc.getRates();
-	for ( int i=0; i < lc.nBins; i++ ) {
+	for ( int i=0; i < lc.nBins(); i++ ) {
 	    
 	    newRates[i] = r[i] - constant;
 	}
@@ -28,22 +28,22 @@ public final class TimeSeriesCombiner {
 	logger.info("Subtracting a TimeSeries");
 
 	//  Check input array size and rebin if necessary
-	if ( lc1.nBins != lc2.nBins ) {
+	if ( lc1.nBins() != lc2.nBins() ) {
 
 	    logger.warn("TimeSeries have different number of bins");
 
-	    if ( lc1.nBins > lc2.nBins ) {
-		lc1.rebin(lc2.nBins);
+	    if ( lc1.nBins() > lc2.nBins() ) {
+		lc1.rebin(lc2.nBins());
 	    }
 	    else {
-		lc2.rebin(lc1.nBins);
+		lc2.rebin(lc1.nBins());
 	    }
 	}
 
 
 	//  Subtract lc.rates from rates
-	double[] newRates = new double[lc1.nBins];
-	for ( int i=0; i < lc1.nBins; i++ ) {
+	double[] newRates = new double[lc1.nBins()];
+	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    
 	    newRates[i] = lc1.rates[i] - lc2.rates[i];
 	}
@@ -53,8 +53,8 @@ public final class TimeSeriesCombiner {
 	//  Combine errors
 	double[] e1 = lc1.getErrors();
 	double[] e2 = lc2.getErrors();
-	double[] newErrors = new double[lc1.nBins];
-	for ( int i=0; i < lc1.nBins; i++ ) {
+	double[] newErrors = new double[lc1.nBins()];
+	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
 	}
 	lc1.setErrors(newErrors);
@@ -65,9 +65,9 @@ public final class TimeSeriesCombiner {
 
 	logger.info("Adding a constant ("+constant+")");
 
-	double[] newRates = new double[lc.nBins];
+	double[] newRates = new double[lc.nBins()];
 	double[] r = lc.getRates();
-	for ( int i=0; i < lc.nBins; i++ ) {
+	for ( int i=0; i < lc.nBins(); i++ ) {
 	    newRates[i] = r[i] + constant;
 	}
 
@@ -80,23 +80,23 @@ public final class TimeSeriesCombiner {
 	logger.info("Adding a TimeSeries");
 
 	//  Check input array size and rebin if necessary
-	if ( lc1.nBins != lc2.nBins ) {
+	if ( lc1.nBins() != lc2.nBins() ) {
 
 	    logger.warn("TimeSeries have different number of bins");
 
-	    if ( lc1.nBins > lc2.nBins ) {
+	    if ( lc1.nBins() > lc2.nBins() ) {
 
-		lc1.rebin(lc2.nBins);
+		lc1.rebin(lc2.nBins());
 	    }
 	    else {
-		lc2.rebin(lc1.nBins);
+		lc2.rebin(lc1.nBins());
 	    }
 
 	}
 
 	//  Add lc.rates to rates
-	double[] newRates = new double[lc1.nBins];
-	for ( int i=0; i < lc1.nBins; i++ ) {
+	double[] newRates = new double[lc1.nBins()];
+	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    
 	    newRates[i] = lc1.rates[i] + lc2.rates[i];
 	}
@@ -105,8 +105,8 @@ public final class TimeSeriesCombiner {
 	//  Combine errors
 	double[] e1 = lc1.getErrors();
 	double[] e2 = lc2.getErrors();
-	double[] newErrors = new double[lc1.nBins];
-	for ( int i=0; i < lc1.nBins; i++ ) {
+	double[] newErrors = new double[lc1.nBins()];
+	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
 	}
 	lc2.setErrors(newErrors);
@@ -117,11 +117,11 @@ public final class TimeSeriesCombiner {
 
 	logger.info("Scaling TimeSeries by "+scalingFactor+"");
 
-	double[] newRates = new double[lc.nBins];
-	double[] newErrors = new double[lc.nBins];
+	double[] newRates = new double[lc.nBins()];
+	double[] newErrors = new double[lc.nBins()];
 	double[] r = lc.getRates();
 	double[] e = lc.getErrors();
-	for ( int i=0; i < lc.nBins; i++ ) {
+	for ( int i=0; i < lc.nBins(); i++ ) {
 	    
 	    newRates[i] = r[i]*scalingFactor;
 	    newErrors[i] = e[i]*scalingFactor;
