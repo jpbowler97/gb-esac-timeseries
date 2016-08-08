@@ -46,7 +46,7 @@ public final class TimeSeriesCombiner {
 	double[] newRates = new double[lc1.nBins()];
 	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    
-	    newRates[i] = lc1.rates[i] - lc2.rates[i];
+	    newRates[i] = lc1.getRates()[i] - lc2.getRates()[i];
 	}
 	lc1.setRates(newRates);
 
