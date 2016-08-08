@@ -1,7 +1,11 @@
 package gb.esac.timeseries;
 
+import org.apache.log4j.Logger;
+
 
 public final class TimeSeriesCombiner {
+
+    private static Logger logger  = Logger.getLogger(TimeSeriesCombiner.class);
 
     public void subtract(TimeSeries lc, double constant) {
 
