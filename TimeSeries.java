@@ -367,7 +367,7 @@ public class TimeSeries {
 
     }
 
-    private void setErrorsOnRates(double[] errors) {
+    public void setErrorsOnRates(double[] errors) {
 	this.errorsOnRates = new double[this.nBins];
 	this.weightsOnRates = new double[this.nBins];
 	double sum = 0;
