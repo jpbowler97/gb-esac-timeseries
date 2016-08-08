@@ -58,7 +58,7 @@ public final class TimeSeriesCombiner {
 	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
 	}
-	lc1.setErrors(newErrors);
+	lc1.setErrorsOnRates(newErrors);
     }
 
 
@@ -110,7 +110,7 @@ public final class TimeSeriesCombiner {
 	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
 	}
-	lc2.setErrors(newErrors);
+	lc2.setErrorsOnRates(newErrors);
     }
 
    
@@ -129,7 +129,7 @@ public final class TimeSeriesCombiner {
 	}
 
 	lc.setRates(newRates);
-	lc.setErrors(newErrors);
+	lc.setErrorsOnRates(newErrors);
     }
 
 
