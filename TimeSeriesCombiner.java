@@ -52,8 +52,8 @@ public final class TimeSeriesCombiner {
 
 
 	//  Combine errors
-	double[] e1 = lc1.getErrors();
-	double[] e2 = lc2.getErrors();
+	double[] e1 = lc1.getErrorsOnRates();
+	double[] e2 = lc2.getErrorsOnRates();
 	double[] newErrors = new double[lc1.nBins()];
 	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
@@ -104,8 +104,8 @@ public final class TimeSeriesCombiner {
 	lc1.setRates(newRates);
 	
 	//  Combine errors
-	double[] e1 = lc1.getErrors();
-	double[] e2 = lc2.getErrors();
+	double[] e1 = lc1.getErrorsOnRates();
+	double[] e2 = lc2.getErrorsOnRates();
 	double[] newErrors = new double[lc1.nBins()];
 	for ( int i=0; i < lc1.nBins(); i++ ) {
 	    newErrors[i] = Math.sqrt( Math.pow(e1[i], 2) + Math.pow(e2[i], 2) );
@@ -121,7 +121,7 @@ public final class TimeSeriesCombiner {
 	double[] newRates = new double[lc.nBins()];
 	double[] newErrors = new double[lc.nBins()];
 	double[] r = lc.getRates();
-	double[] e = lc.getErrors();
+	double[] e = lc.getErrorsOnRates();
 	for ( int i=0; i < lc.nBins(); i++ ) {
 	    
 	    newRates[i] = r[i]*scalingFactor;
