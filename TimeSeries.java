@@ -317,7 +317,7 @@ public class TimeSeries {
 	setStatsOnIntensities();
     }
 
-    public void setRates(double[] r) {
+    protected void setRates(double[] r) {
 	this.rates = new double[this.nBins];
 	this.binHeights = new double[this.nBins];
 	double minRate = Double.MAX_VALUE;
@@ -367,7 +367,7 @@ public class TimeSeries {
 
     }
 
-    public void setErrorsOnRates(double[] errors) {
+    protected void setErrorsOnRates(double[] errors) {
 	this.errorsOnRates = new double[this.nBins];
 	this.weightsOnRates = new double[this.nBins];
 	double sum = 0;
