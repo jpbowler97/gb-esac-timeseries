@@ -317,7 +317,7 @@ public class TimeSeries {
 	setStatsOnIntensities();
     }
 
-    private void setRates(double[] r) {
+    public void setRates(double[] r) {
 	this.rates = new double[this.nBins];
 	this.binHeights = new double[this.nBins];
 	double minRate = Double.MAX_VALUE;
